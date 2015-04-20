@@ -16,7 +16,7 @@ RUN echo en_US.UTF-8 UTF-8 > /etc/locale.gen && \
     rm /etc/auto.master && \
     ln -s /home/auto.master /etc/ && \
     \
-    mkdir -p /www/tmp/spooler /www/app /www/static/jquery /www/static/bootstrap /www/static/django_ajax && \
+    mkdir -p /www/tmp/spooler /www/app /www/static/jquery /www/static/bootstrap /www/static/django_ajax /www/static/slickgrid /www/static/highcharts && \
     echo "daemon off;" >> /etc/nginx/nginx.conf && \
     rm /etc/nginx/sites-enabled/default && \
     \
@@ -28,10 +28,14 @@ RUN echo en_US.UTF-8 UTF-8 > /etc/locale.gen && \
     npm install -g bower && \
     \
     cd /tmp && \
-    bower --allow-root --config.interactive=false install --production jquery#2.1.3 bootstrap#3.3.1 highcharts.com#v4.0.4 slickgrid-fastColumnSizing#2.2.1 && \
+    bower --allow-root --config.interactive=false install --production jquery#2.1.3 bootstrap#3.3.1 slickgrid-fastColumnSizing#2.2.1 && \
     cp /tmp/bower_components/jquery/dist/*.min.* /www/static/jquery/ && \
     cp -r /tmp/bower_components/bootstrap/dist/* /www/static/bootstrap/ && \
+    cp -r /tmp/bower_components/slickgrid-fastColumnSizing/* /www/static/slickgrid/ && \
     \
+    bower --allow-root --config.interactive=false cache clean && \
+    rm -rf /.cache/bower && \
+    rm -rf /tmp/bower_components && \
     npm uninstall -g bower && \
     \
     apt-get --purge remove --auto-remove -y python-pip npm gcc && \
