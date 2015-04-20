@@ -31,13 +31,7 @@ RUN echo en_US.UTF-8 UTF-8 > /etc/locale.gen && \
     bower --allow-root --config.interactive=false install --production jquery#2.1.3 bootstrap#3.3.1 highcharts.com#v4.0.4 slickgrid-fastColumnSizing#2.2.1 && \
     cp /tmp/bower_components/jquery/dist/*.min.* /www/static/jquery/ && \
     cp -r /tmp/bower_components/bootstrap/dist/* /www/static/bootstrap/ && \
-    cp -r /tmp/bower_components/highcharts.com/dist/* /www/static/highcharts/ && \
-    cp -r /tmp/bower_components/slickgrid-fastColumnSizing/dist/* /www/static/slickgrid/ && \
-    
     \
-    bower --allow-root --config.interactive=false cache clean && \
-    rm -rf /.cache/bower && \
-    rm -rf /tmp/bower_components && \
     npm uninstall -g bower && \
     \
     apt-get --purge remove --auto-remove -y python-pip npm gcc && \
