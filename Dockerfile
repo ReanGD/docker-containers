@@ -24,6 +24,10 @@ RUN echo en_US.UTF-8 UTF-8 > /etc/locale.gen && \
     \
     cp /usr/local/lib/python2.7/dist-packages/django_ajax/static/django_ajax/js/*.min.* /www/static/django_ajax && \
     \
+    git clone --branch v4.0.0 https://github.com/highslide-software/highcharts.com.git /www/static/highcharts && \
+    cd /www/static/highcharts && \
+    rm -rf samples tools utils test studies .git bower.json build.md build.properties build.xml changelog.htm invalidations.txt readme.md ant && \
+    \
     ln -s /usr/bin/nodejs /usr/bin/node && \
     npm install -g bower && \
     \
