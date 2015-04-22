@@ -31,11 +31,11 @@ RUN echo en_US.UTF-8 UTF-8 > /etc/locale.gen && \
     npm install -g bower && \
     \
     cd /tmp && \
-    bower --allow-root --config.interactive=false install --production jquery#2.1.3 bootstrap#3.3.1 slickgrid-fastColumnSizing#2.2.1 angular-latest#v1.3.15 ng-table#v0.5.4 && \
+    bower --allow-root --config.interactive=false install --production jquery#2.1.3 bootstrap#3.3.1 slickgrid-fastColumnSizing#2.2.1 angular#v1.3.15 ng-table#v0.5.4 && \
     cp /tmp/bower_components/jquery/dist/*.min.* /www/static/jquery/ && \
     cp -r /tmp/bower_components/bootstrap/dist/* /www/static/bootstrap/ && \
     cp -r /tmp/bower_components/slickgrid-fastColumnSizing/* /www/static/slickgrid/ && \
-    cp -r /tmp/bower_components/angular-latest/* /www/static/angular/ && \
+    cp -r /tmp/bower_components/angular/* /www/static/angular/ && \
     cp -r /tmp/bower_components/ng-table/dist/* /www/static/ng-table/ && \
     \
     bower --allow-root --config.interactive=false cache clean && \
