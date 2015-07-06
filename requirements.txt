@@ -3,3 +3,4 @@ djangoajax
 uwsgi
 jenkinsapi==0.2.25
 lxml==3.4.0
+django-aggregate-if
