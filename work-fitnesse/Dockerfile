@@ -4,7 +4,7 @@ MAINTAINER ReanGD
 
 ENV DEBIAN_FRONTEND noninteractive
 
-ADD work-fitnesse/* /home/
+ADD * /home/
 
 RUN echo en_US.UTF-8 UTF-8 > /etc/locale.gen && \
     echo ru_RU.UTF-8 UTF-8 >> /etc/locale.gen && \
