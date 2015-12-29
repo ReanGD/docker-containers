@@ -4,10 +4,11 @@ MAINTAINER ReanGD
 
 ENV DEBIAN_FRONTEND noninteractive
 
-ADD * /home/
+ADD work-fitnesse/* /home/
 
 RUN echo en_US.UTF-8 UTF-8 > /etc/locale.gen && \
-    echo ru_RU.UTF-8 UTF-8 >> /etc/locale.gen && \    
+    echo ru_RU.UTF-8 UTF-8 >> /etc/locale.gen && \
+    chmod +x /home/run.sh && \
     \
     apt-get update && \
     apt-get install -y --no-install-recommends locales supervisor gcc git python-minimal python-pip python-dev python-six python-psycopg2 libxml2-dev libxslt1-dev libssl-dev nginx npm && \
@@ -31,7 +32,7 @@ RUN echo en_US.UTF-8 UTF-8 > /etc/locale.gen && \
     npm install -g bower && \
     \
     cd /tmp && \
-    bower --allow-root --config.interactive=false install --production jquery#2.1.3 bootstrap#3.3.1 && \
+    bower --allow-root --config.interactive=false install --production jquery#2.1.4 bootstrap#3.3.6 && \
     cp /tmp/bower_components/jquery/dist/*.min.* /www/static/jquery/ && \
     cp -r /tmp/bower_components/bootstrap/dist/* /www/static/bootstrap/ && \
     \
