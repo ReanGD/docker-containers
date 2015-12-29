@@ -11,18 +11,16 @@ RUN echo en_US.UTF-8 UTF-8 > /etc/locale.gen && \
     chmod +x /home/run.sh && \
     \
     apt-get update && \
-    apt-get install -y --no-install-recommends locales supervisor gcc git python-minimal python-pip python-dev python-six python-psycopg2 libxml2-dev libxslt1-dev libssl-dev nginx npm && \
+    apt-get install -y --no-install-recommends locales supervisor gcc git python3-minimal python3-pip python3-dev python3-six python3-psycopg2 libxml2-dev libxslt1-dev libssl-dev nginx npm && \
     apt-get install -y --no-install-recommends vim && \
     \
     mkdir -p /www/tmp/spooler /www/app /www/static/jquery /www/static/bootstrap /www/static/django_ajax /www/static/highcharts && \
     echo "daemon off;" >> /etc/nginx/nginx.conf && \
     rm /etc/nginx/sites-enabled/default && \
     \
-    rm -rf /usr/local/lib/python2.7/dist-packages/requests* && \
-	easy_install requests==2.3.0 && \
-    pip install -r /home/requirements.txt && \
+    pip3 install -r /home/requirements.txt && \
     \
-    cp /usr/local/lib/python2.7/dist-packages/django_ajax/static/django_ajax/js/*.min.* /www/static/django_ajax && \
+    cp /usr/local/lib/python3/dist-packages/django_ajax/static/django_ajax/js/*.min.* /www/static/django_ajax && \
     \
     git clone --branch v4.0.0 https://github.com/highslide-software/highcharts.com.git /www/static/highcharts && \
     cd /www/static/highcharts && \
@@ -41,7 +39,7 @@ RUN echo en_US.UTF-8 UTF-8 > /etc/locale.gen && \
     rm -rf /tmp/bower_components && \
     npm uninstall -g bower && \
     \
-    apt-get --purge remove --auto-remove -y python-pip npm gcc && \
+    apt-get --purge remove --auto-remove -y python3-pip npm gcc && \
     apt-get clean && \
     rm -rf /var/cache/apt/* && \
     rm -rf /var/lib/apt/* && \
