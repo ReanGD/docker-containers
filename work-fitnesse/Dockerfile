@@ -20,7 +20,7 @@ RUN echo en_US.UTF-8 UTF-8 > /etc/locale.gen && \
     \
     pip3 install -r /home/requirements.txt && \
     \
-    cp /usr/local/lib/python3/dist-packages/django_ajax/static/django_ajax/js/*.min.* /www/static/django_ajax && \
+    cp /usr/local/lib/python3.4/dist-packages/django_ajax/static/django_ajax/js/*.min.* /www/static/django_ajax && \
     \
     git clone --branch v4.0.0 https://github.com/highslide-software/highcharts.com.git /www/static/highcharts && \
     cd /www/static/highcharts && \
