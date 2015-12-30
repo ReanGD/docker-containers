@@ -13,7 +13,11 @@ RUN echo en_US.UTF-8 UTF-8 > /etc/locale.gen && \
     chmod +x /home/run.sh && \
     \
     apt-get update && \
-    apt-get install -y --no-install-recommends locales supervisor git python3-pip python3-psycopg2 python3-lxml python3-pkg-resources python3-six uwsgi-core uwsgi-plugin-python3 python3-uwsgidecorators libssl-dev nginx npm && \
+    apt-get install -y --no-install-recommends locales supervisor git && \
+    apt-get install -y --no-install-recommends python3-pip python3-psycopg2 python3-lxml && \
+    apt-get install -y --no-install-recommends python3-pkg-resources python3-six python3-requests && \
+    apt-get install -y --no-install-recommends uwsgi-core uwsgi-plugin-python3 python3-uwsgidecorators && \
+    apt-get install -y --no-install-recommends libssl-dev nginx && \
     apt-get install -y --no-install-recommends unzip vim && \
     \
     mkdir -p /www/tmp/spooler /www/app /www/static/jquery /www/static/bootstrap /www/static/django_ajax /www/static/highcharts && \
@@ -25,28 +29,20 @@ RUN echo en_US.UTF-8 UTF-8 > /etc/locale.gen && \
     cp /usr/local/lib/python3.4/dist-packages/django_ajax/static/django_ajax/js/*.min.* /www/static/django_ajax && \
     \
     unzip /home/bootstrap.zip -d /home/bootstrap && \
+    cp -r /home/bootstrap/bootstrap-3.3.6-dist/* /www/static/bootstrap/ && \
     rm /home/bootstrap.zip && \
+    rm -rf /home/bootstrap && \
+    \
     unzip /home/jquery.zip  -d /home/jquery && \
+    cp /home/jquery/jquery-2.1.4/dist/*.min.* /www/static/jquery/ && \
     rm /home/jquery.zip && \
+    rm -rf /home/jquery && \
     \
     git clone --branch v4.0.0 https://github.com/highslide-software/highcharts.com.git /www/static/highcharts && \
     cd /www/static/highcharts && \
     rm -rf samples tools utils test studies .git bower.json build.md build.properties build.xml changelog.htm invalidations.txt readme.md ant && \
     \
-    ln -s /usr/bin/nodejs /usr/bin/node && \
-    npm install -g bower && \
-    \
-    cd /tmp && \
-    bower --allow-root --config.interactive=false install --production jquery#2.1.4 bootstrap#3.3.6 && \
-    cp /tmp/bower_components/jquery/dist/*.min.* /www/static/jquery/ && \
-    cp -r /tmp/bower_components/bootstrap/dist/* /www/static/bootstrap/ && \
-    \
-    bower --allow-root --config.interactive=false cache clean && \
-    rm -rf /.cache/bower && \
-    rm -rf /tmp/bower_components && \
-    npm uninstall -g bower && \
-    \
-    apt-get --purge remove --auto-remove -y python3-pip npm unzip && \
+    apt-get --purge remove --auto-remove -y python3-pip unzip && \
     apt-get clean && \
     rm -rf /var/cache/apt/* && \
     rm -rf /var/lib/apt/* && \
