@@ -11,8 +11,8 @@ RUN echo en_US.UTF-8 UTF-8 > /etc/locale.gen && \
     chmod +x /home/run.sh && \
     \
     apt-get update && \
-    apt-get install -y --no-install-recommends locales supervisor git python3-pip python3-psycopg2 python3-lxml uwsgi-core uwsgi-plugin-python3 python3-uwsgidecorators libssl-dev nginx npm && \
-    apt-get install -y --no-install-recommends vim && \
+    apt-get install -y --no-install-recommends locales supervisor git python3-pip python3-psycopg2 python3-lxml python3-pkg-resources uwsgi-core uwsgi-plugin-python3 python3-uwsgidecorators libssl-dev nginx-light npm && \
+    apt-get install -y --no-install-recommends curl vim && \
     \
     mkdir -p /www/tmp/spooler /www/app /www/static/jquery /www/static/bootstrap /www/static/django_ajax /www/static/highcharts && \
     echo "daemon off;" >> /etc/nginx/nginx.conf && \
