@@ -6,7 +6,7 @@ ENV DEBIAN_FRONTEND noninteractive
 
 ADD * /home/
 ADD https://github.com/twbs/bootstrap/releases/download/v3.3.6/bootstrap-3.3.6-dist.zip /home/bootstrap.zip
-ADD https://github.com/jquery/jquery/archive/2.1.4.zip /home/bootstrap.zip
+ADD https://github.com/jquery/jquery/archive/2.1.4.zip /home/jquery.zip
 
 RUN echo en_US.UTF-8 UTF-8 > /etc/locale.gen && \
     echo ru_RU.UTF-8 UTF-8 >> /etc/locale.gen && \
@@ -14,7 +14,12 @@ RUN echo en_US.UTF-8 UTF-8 > /etc/locale.gen && \
     \
     apt-get update && \
     apt-get install -y --no-install-recommends locales supervisor git python3-pip python3-psycopg2 python3-lxml python3-pkg-resources uwsgi-core uwsgi-plugin-python3 python3-uwsgidecorators libssl-dev nginx npm && \
-    apt-get install -y --no-install-recommends vim && \
+    apt-get install -y --no-install-recommends unzip vim && \
+    \
+    unzip /home/bootstrap.zip && \
+    rm /home/bootstrap.zip && \
+    unzip /home/jquery.zip && \
+    rm /home/jquery.zip && \
     \
     mkdir -p /www/tmp/spooler /www/app /www/static/jquery /www/static/bootstrap /www/static/django_ajax /www/static/highcharts && \
     echo "daemon off;" >> /etc/nginx/nginx.conf && \
