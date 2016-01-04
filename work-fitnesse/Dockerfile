@@ -15,7 +15,7 @@ RUN echo en_US.UTF-8 UTF-8 > /etc/locale.gen && \
     apt-get update && \
     apt-get install -y --no-install-recommends locales supervisor git && \
     apt-get install -y --no-install-recommends python3-pip python3-psycopg2 python3-lxml && \
-    apt-get install -y --no-install-recommends python3-django python3-django-celery && \
+    apt-get install -y --no-install-recommends python3-django celeryd python3-django-celery && \
     apt-get install -y --no-install-recommends python3-pkg-resources python3-six python3-requests && \
     apt-get install -y --no-install-recommends uwsgi-core uwsgi-plugin-python3 python3-uwsgidecorators && \
     apt-get install -y --no-install-recommends libssl-dev nginx && \
