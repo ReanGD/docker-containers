@@ -1,8 +1,8 @@
+apt-get clean
+
 rm -rf /var/cache/apt/*
 rm -rf /var/lib/apt/*
 rm -rf /var/lib/dpkg/*
-rm -rf /var/lib/cache/*
-rm -rf /var/lib/log/*
 rm -rf /var/tmp/*
 rm -rf /tmp/*
 rm -rf /usr/share/i18n/

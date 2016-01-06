@@ -20,12 +20,13 @@ RUN echo en_US.UTF-8 UTF-8 > /etc/locale.gen && \
     apt-get install -y --no-install-recommends libssl-dev nginx && \
     apt-get install -y --no-install-recommends unzip vim && \
     \
+    adduser --no-create-home --disabled-password --shell /bin/bash --gecos '' docker_user
     echo "daemon off;" >> /etc/nginx/nginx.conf && \
     rm /etc/nginx/sites-enabled/default && \
     pip3 install -r /home/requirements.txt && \
     /home/install_static.sh && \
     apt-get --purge remove --auto-remove -y unzip && \
-    apt-get clean
+    /home/clean.sh
 
 ENV LANG ru_RU.UTF-8
 ENV LANGUAGE ru_RU.UTF-8
