@@ -5,5 +5,4 @@
 
 ln -s /www/app/nginx-app.conf /etc/nginx/sites-enabled/
 
-uwsgi --ini /www/app/uwsgi.ini
 supervisord --configuration=/www/app/supervisord.conf
