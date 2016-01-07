@@ -23,8 +23,7 @@ RUN echo en_US.UTF-8 UTF-8 > /etc/locale.gen && \
     mkdir -p /www/tmp/ && \
     chmod 777 /www/tmp/ && \
     \
-    adduser --system --no-create-home --disabled-login --disabled-password --group uwsgi_user && \
-    adduser --system --no-create-home --disabled-login --disabled-password --group celery_user && \
+    adduser --system --no-create-home --disabled-login --disabled-password --group web_user && \
     rm /etc/nginx/sites-enabled/default && \
     pip3 install -r /home/requirements.txt && \
     /home/install_static.sh && \
