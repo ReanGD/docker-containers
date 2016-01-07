@@ -13,6 +13,7 @@ RUN echo en_US.UTF-8 UTF-8 > /etc/locale.gen && \
     \
     apt-get update && \
     apt-get install -y --no-install-recommends locales git supervisor && \
+    apt-get install -y --no-install-recommends redis-server && \
     apt-get install -y --no-install-recommends python3-pip python3-psycopg2 python3-lxml && \
     apt-get install -y --no-install-recommends python3-django libjs-jquery celeryd python3-django-celery && \
     apt-get install -y --no-install-recommends python3-six python3-requests && \
