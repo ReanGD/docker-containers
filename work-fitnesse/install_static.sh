@@ -1,6 +1,7 @@
-mkdir -p /www/app /www/static/jquery /www/static/bootstrap /www/static/django_ajax /www/static/highcharts
+mkdir -p /www/app /www/static/jquery /www/static/bootstrap /www/static/admin /www/static/django_ajax /www/static/highcharts
 
 cp /usr/local/lib/python3.4/dist-packages/django_ajax/static/django_ajax/js/*.min.* /www/static/django_ajax
+cp -r /usr/share/python-django-common/django/contrib/admin/static/admin/* /www/static/admin
 
 unzip /home/bootstrap.zip -d /home/bootstrap
 cp -r /home/bootstrap/bootstrap-3.3.6-dist/* /www/static/bootstrap/
