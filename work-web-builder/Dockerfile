@@ -11,16 +11,15 @@ RUN echo en_US.UTF-8 UTF-8 > /etc/locale.gen && \
     \
     apt-get update && \
     apt-get install -y --no-install-recommends locales git openssh-server openjdk-7-jdk && \
-    apt-get install -y --no-install-recommends python3-pip && \
+    apt-get install -y --no-install-recommends python3-pip pylint3 && \
     \
     mkdir -p /jenkins/ && \
     chmod 777 /jenkins/ && \
+    mkdir /var/run/sshd/ && \
     \
     adduser --quiet jenkins && echo "jenkins:jenkins" | chpasswd && \
-    mkdir /var/run/sshd && \
-    sed 's/UsePAM yes/UsePAM no/' -i /etc/ssh/sshd_config
-#    /home/clean.sh && \
-#    sed -i 's|session    required     pam_loginuid.so|session    optional     pam_loginuid.so|g' /etc/pam.d/sshd
+    sed 's/UsePAM yes/UsePAM no/' -i /etc/ssh/sshd_config && \
+    /home/clean.sh
 
 ENV LANG ru_RU.UTF-8
 ENV LANGUAGE ru_RU.UTF-8
