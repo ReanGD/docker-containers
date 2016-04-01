@@ -16,10 +16,11 @@ RUN echo en_US.UTF-8 UTF-8 > /etc/locale.gen && \
     mkdir -p /jenkins/ && \
     chmod 777 /jenkins/ && \
     \
-    adduser --no-create-home --quiet jenkins && echo "jenkins:jenkins" | chpasswd && \
+    adduser --quiet jenkins && echo "jenkins:jenkins" | chpasswd && \
     mkdir /var/run/sshd && \
+    sed 's/UsePAM yes/UsePAM no/' -i /etc/ssh/sshd_config
 #    /home/clean.sh && \
-    sed -i 's|session    required     pam_loginuid.so|session    optional     pam_loginuid.so|g' /etc/pam.d/sshd
+#    sed -i 's|session    required     pam_loginuid.so|session    optional     pam_loginuid.so|g' /etc/pam.d/sshd
 
 ENV LANG ru_RU.UTF-8
 ENV LANGUAGE ru_RU.UTF-8
