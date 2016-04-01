@@ -4,6 +4,8 @@ MAINTAINER ReanGD
 
 ENV DEBIAN_FRONTEND noninteractive
 
+ADD * /home/
+
 RUN echo en_US.UTF-8 UTF-8 > /etc/locale.gen && \
     echo ru_RU.UTF-8 UTF-8 >> /etc/locale.gen && \
     \
@@ -11,19 +13,19 @@ RUN echo en_US.UTF-8 UTF-8 > /etc/locale.gen && \
     apt-get install -y --no-install-recommends locales git openssh-server openjdk-7-jdk && \
     apt-get install -y --no-install-recommends python3-pip && \
     \
-    adduser --quiet jenkins && echo "jenkins:jenkins" | chpasswd && \
-    mkdir /var/run/sshd && \
-    sed -i 's|session    required     pam_loginuid.so|session    optional     pam_loginuid.so|g' /etc/pam.d/sshd && \
+    mkdir -p /jenkins/ && \
+    chmod 777 /jenkins/ && \
     \
-    adduser --system --no-create-home --disabled-login --disabled-password --group web_user && \
-    rm /etc/nginx/sites-enabled/default && \
-    pip3 install -r /home/requirements.txt && \
-    /home/install_static.sh && \
-    apt-get --purge remove --auto-remove -y unzip && \
-    /home/clean.sh
+    adduser --no-create-home --quiet jenkins && echo "jenkins:jenkins" | chpasswd && \
+    mkdir /var/run/sshd && \
+#    /home/clean.sh && \
+    sed -i 's|session    required     pam_loginuid.so|session    optional     pam_loginuid.so|g' /etc/pam.d/sshd
 
 ENV LANG ru_RU.UTF-8
 ENV LANGUAGE ru_RU.UTF-8
 
 EXPOSE 22
+
+VOLUME ["/jenkins"]
+
 CMD ["/usr/sbin/sshd", "-D"]
