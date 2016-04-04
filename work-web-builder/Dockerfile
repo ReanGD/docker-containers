@@ -4,7 +4,7 @@ MAINTAINER ReanGD
 
 ENV DEBIAN_FRONTEND noninteractive
 
-ADD * /tmp/
+ADD * /home/
 
 RUN apt-get update && \
     apt-get install -y --no-install-recommends git openssh-server openjdk-7-jdk && \
@@ -15,15 +15,15 @@ RUN apt-get update && \
     echo "jenkins:jenkins" | chpasswd && \
     mkdir -p /jenkins && \
     \
-    chmod +x /tmp/clean.sh && \
-    chmod +x /tmp/run.sh && \
+    chmod +x /home/clean.sh && \
+    chmod +x /home/run.sh && \
     mkdir /var/run/sshd/ && \
     \
     sed 's/UsePAM yes/UsePAM no/' -i /etc/ssh/sshd_config && \
-    /tmp/clean.sh
+    /home/clean.sh
 
 EXPOSE 22
 
 VOLUME ["/jenkins"]
 
-CMD /tmp/run.sh
+CMD /home/run.sh
