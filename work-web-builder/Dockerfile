@@ -1,4 +1,4 @@
-FROM debian:jessie
+FROM debian:stretch
 
 MAINTAINER ReanGD
 
@@ -8,7 +8,7 @@ ADD * /home/
 
 RUN apt-get update && \
     apt-get install -y --no-install-recommends git openssh-server openjdk-7-jdk && \
-    apt-get install -y --no-install-recommends python3-pip && \
+    apt-get install -y --no-install-recommends python3-pip pylint3 pyflakes3 python3-pep8 python3-flake8 && \
     \
     pip3 install pylint && \
     \
@@ -19,9 +19,6 @@ RUN apt-get update && \
     adduser --quiet jenkins && echo "jenkins:jenkins" | chpasswd && \
     sed 's/UsePAM yes/UsePAM no/' -i /etc/ssh/sshd_config && \
     /home/clean.sh
-
-ENV LANG ru_RU.UTF-8
-ENV LANGUAGE ru_RU.UTF-8
 
 EXPOSE 22
 
