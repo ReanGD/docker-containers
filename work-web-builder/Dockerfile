@@ -14,10 +14,9 @@ RUN apt-get update && \
     useradd -m jenkins && \
     echo "jenkins:jenkins" | chpasswd && \
     mkdir -p /jenkins && \
-    chmod 777 /jenkins && \
-    chown -R jenkins:jenkins /jenkins && \
     \
     chmod +x /tmp/clean.sh && \
+    chmod +x /tmp/run.sh && \
     mkdir /var/run/sshd/ && \
     \
     sed 's/UsePAM yes/UsePAM no/' -i /etc/ssh/sshd_config && \
@@ -27,4 +26,4 @@ EXPOSE 22
 
 VOLUME ["/jenkins"]
 
-CMD ["/usr/sbin/sshd", "-D"]
+CMD /tmp/run.sh
