@@ -16,7 +16,7 @@ RUN apt-get update && \
     chmod 777 /jenkins/ && \
     mkdir /var/run/sshd/ && \
     \
-    useradd jenkins && echo "jenkins:jenkins" | chpasswd && \
+    useradd -m -p jenkins jenkins && \
     sed 's/UsePAM yes/UsePAM no/' -i /etc/ssh/sshd_config && \
     /tmp/clean.sh
 
