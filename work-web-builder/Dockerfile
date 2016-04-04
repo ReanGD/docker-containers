@@ -11,13 +11,15 @@ RUN apt-get update && \
     apt-get install -y --no-install-recommends python3-pip pylint3 pyflakes3 python3-pep8 python3-flake8 && \
     pip3 install Django===1.9.1 && \
     \
-    chmod +x /tmp/clean.sh && \
-    mkdir -p /jenkins/ && \
-    chmod 777 /jenkins/ && \
-    mkdir /var/run/sshd/ && \
-    \
     useradd -m jenkins && \
     echo "jenkins:jenkins" | chpasswd && \
+    mkdir -p /jenkins && \
+    chmod 777 /jenkins && \
+    chown -R jenkins:jenkins /jenkins && \
+    \
+    chmod +x /tmp/clean.sh && \
+    mkdir /var/run/sshd/ && \
+    \
     sed 's/UsePAM yes/UsePAM no/' -i /etc/ssh/sshd_config && \
     /tmp/clean.sh
 
