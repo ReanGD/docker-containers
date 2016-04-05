@@ -9,8 +9,7 @@ ADD * /home/
 RUN apt-get update && \
     apt-get install -y --no-install-recommends git openssh-server openjdk-7-jdk && \
     apt-get install -y --no-install-recommends python3-pip pylint3 pyflakes3 python3-pep8 python3-flake8 && \
-    pip3 install Django===1.9.1 && \
-    pip3 install django-jenkins && \
+    pip3 install -r /home/requirements.txt && \
     \
     useradd -m jenkins && \
     echo "jenkins:jenkins" | chpasswd && \
