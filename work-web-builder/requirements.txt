@@ -1,4 +1,1 @@
 Django==1.9.1
-requests==2.9.1
-djangoajax==2.3.3
-django-jenkins
