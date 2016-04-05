@@ -26,6 +26,9 @@ RUN chmod +x /home/clean.sh && \
     sed 's/UsePAM yes/UsePAM no/' -i /etc/ssh/sshd_config && \
     /home/clean.sh
 
+ENV LANG ru_RU.UTF-8
+ENV LANGUAGE ru_RU.UTF-8
+
 EXPOSE 22
 
 VOLUME ["/jenkins"]
