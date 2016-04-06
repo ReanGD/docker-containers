@@ -19,6 +19,7 @@ RUN chmod +x /home/clean.sh && \
     pip3 install -e git+git://github.com/kmmbvnr/django-jenkins.git#egg=django-jenkins && \
     pip3 install -r /home/requirements.txt && \
     \
+    ln -s /usr/bin/nodejs /usr/bin/node && \
     npm install -g jshint && \
     npm install -g csslint && \
     \
