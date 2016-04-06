@@ -14,7 +14,7 @@ RUN chmod +x /home/clean.sh && \
     \
     apt-get update && \
     apt-get install -y --no-install-recommends locales git openssh-server openjdk-7-jdk npm && \
-    apt-get install -y --no-install-recommends python3-pip sloccount && \
+    apt-get install -y --no-install-recommends python3-pip sloccount gettext && \
     \
     pip3 install -e git+git://github.com/kmmbvnr/django-jenkins.git#egg=django-jenkins && \
     pip3 install -r /home/requirements.txt && \
