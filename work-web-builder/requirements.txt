@@ -1,6 +1,7 @@
 Django==1.9.5
-djangoajax==2.3.3
 requests==2.9.1
+djangoajax==2.3.3
+jsonschema==2.5.1
 pylint==1.5.4
 pylint-django==0.7.1
 coverage==4.0.3
