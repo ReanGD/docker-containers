@@ -14,7 +14,7 @@ RUN chmod +x /home/clean.sh && \
     \
     apt-get update && \
     apt-get install -y --no-install-recommends locales git openssh-server openjdk-8-jdk npm zip && \
-    apt-get install -y --no-install-recommends python3-pip python3-setuptools sloccount cloc gettext && \
+    apt-get install -y --no-install-recommends python3-pip python3-setuptools gettext && \
     \
     pip3 install -r /home/requirements.txt && \
     pip3 install -e git+git://github.com/kmmbvnr/django-jenkins.git#egg=django-jenkins && \
@@ -22,6 +22,7 @@ RUN chmod +x /home/clean.sh && \
     ln -s /usr/bin/nodejs /usr/bin/node && \
     npm install -g jshint && \
     npm install -g csslint && \
+    npm install -g cloc && \
     \
     useradd -m jenkins && \
     echo "jenkins:jenkins" | chpasswd && \
