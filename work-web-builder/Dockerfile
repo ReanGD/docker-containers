@@ -5,7 +5,7 @@ MAINTAINER ReanGD
 ENV DEBIAN_FRONTEND noninteractive
 
 ADD * /home/
-ADD https://deb.nodesource.com/setup_4.x /home/setup_4.sh
+ADD https://deb.nodesource.com/setup_6.x /home/setup_6.sh
 
 RUN chmod +x /home/clean.sh && \
     chmod +x /home/run.sh && \
@@ -18,7 +18,7 @@ RUN chmod +x /home/clean.sh && \
     apt-get install -y --no-install-recommends locales git openssh-server openjdk-8-jdk less nano wget zip && \
     apt-get install -y --no-install-recommends python3-pip python3-setuptools gettext && \
     \
-    /home/setup_4.sh && \
+    /home/setup_6.sh && \
     apt-get install -y nodejs && \
     \
     pip3 install -r /home/requirements.txt && \
