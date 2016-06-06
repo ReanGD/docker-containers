@@ -9,7 +9,7 @@ ADD https://deb.nodesource.com/setup_6.x /home/setup_6.sh
 
 RUN chmod +x /home/clean.sh && \
     chmod +x /home/run.sh && \
-    chmod +x /home/setup_4.sh && \
+    chmod +x /home/setup_6.sh && \
     \
     echo en_US.UTF-8 UTF-8 > /etc/locale.gen && \
     echo ru_RU.UTF-8 UTF-8 >> /etc/locale.gen && \
