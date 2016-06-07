@@ -24,9 +24,17 @@ RUN chmod +x /home/clean.sh && \
     pip3 install -r /home/requirements.txt && \
     pip3 install -e git+git://github.com/kmmbvnr/django-jenkins.git#egg=django-jenkins && \
     \
+    npm install -g cloc && \
     npm install -g jshint && \
     npm install -g csslint && \
-    npm install -g cloc && \
+    npm install -g eslint && \
+    npm install -g babel-core && \
+    npm install -g babel-loader && \
+    npm install -g babel-preset-es2015 && \
+    npm install -g babel-preset-stage-0 && \
+    npm install -g babel-runtime && \
+    npm install -g webpack && \
+    npm install -g webpack-dev-server && \
     \
     useradd -m jenkins && \
     echo "jenkins:jenkins" | chpasswd && \
