@@ -15,7 +15,7 @@ RUN chmod +x /home/clean.sh && \
     echo ru_RU.UTF-8 UTF-8 >> /etc/locale.gen && \
     \
     apt-get update && \
-    apt-get install -y --no-install-recommends locales git openssh-server openjdk-8-jdk less nano wget zip p7zip && \
+    apt-get install -y --no-install-recommends locales git openssh-server openjdk-8-jdk less nano wget zip && \
     apt-get install -y --no-install-recommends python3-pip python3-setuptools gettext && \
     \
     /home/setup_6.sh && \
