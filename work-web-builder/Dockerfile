@@ -36,6 +36,7 @@ RUN chmod +x /home/clean.sh && \
     npm install -g babel-runtime && \
     npm install -g webpack && \
     npm install -g gulp-cli && \
+    npm install -g node-sass && \
     \
     useradd -m jenkins && \
     echo "jenkins:jenkins" | chpasswd && \
