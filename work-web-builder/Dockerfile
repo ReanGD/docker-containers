@@ -37,6 +37,7 @@ RUN chmod +x /home/clean.sh && \
     npm install -g webpack && \
     npm install -g gulp-cli && \
     npm install -g gulp-order && \
+    npm install -g node-gyp && \    
     npm install -g node-sass && \
     \
     useradd -m jenkins && \
